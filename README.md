@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -63,14 +62,15 @@
         }
         .photos {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
             margin: 20px 0;
         }
         .photos img {
-            width: 200px;
-            height: 200px;
+            width: 90%;
+            max-width: 600px;
+            height: auto;
             object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -135,8 +135,32 @@
         <div class="message">
             انسانه قمر واحلي منها مفيش ما شاء الله نورت عليا حياتي محبتش غيرك ولا هحب  حد غيرك حبيتك بجد وعشقتك وبموت فيكي وبغير وبغير وبغير ليا انا وبس ونفس الكلام انا
         </div>
-        <div class="massege">
+        <div class="message">
             بحبك اعمل ايه طيب 😂❤️❤️❤️❤️
+        </div>
+        
+        <div class="message">
+            وربنا يديمك ليا يارب 💕💕💕
+        </div>
+        
+        <div class="message">
+            وعد مني ليكي.. هفضل جنبك في الفرح والحزن، في السعاده والتعب، هبقي سندك وحبيبك وصاحبك، مزي منتي روحي واختي وبنتي وحياتي كلها  انتي ملكتي قلبي ❤️👑
+        </div>
+        
+        <div class="message">
+            كل ما بصحي الصبح اول حاجه بفتكرها وجهك الجميل وابتسامتك اللي بتنور يومي، وكل ما بنام اخر حاجه بفكر فيها انك جنبي وقلبي معاكي، انتي حياتي كلها يا روحي 💖✨
+        </div>
+        
+        <div class="message">
+            مهما اقول ومهما اكتب مش هقدر اوصفلك قد ايه انا بحبك وقد ايه انتي مهمه ليا، انتي مش بس حبيبتي، انتي روحي وقلبي ونور عيني، انتي كل حاجه حلوه في حياتي 💝🌟
+        </div>
+        
+        <div class="message">
+            شكراً انك موجوده في حياتي، شكراً انك بتحبيني، شكراً على كل لحظه ، وان شاء الله عمرنا كله كله كله مع بعض يروحي❤️😍
+        </div>
+        
+        <div class="message">
+            ربنا يخليكي ليا يا اجمل واحلي حاجه حصلتلي ❤️❤️❤️❤️❤️💕
         </div>
 
         <div class="photos">
@@ -147,11 +171,41 @@
 
         <div class="music">
             <h2>Listen Our Song 🎶</h2>
-            <audio controls autoplay loop>
-                <source src="https://drive.google.com/uc?export=download&id=1uAC8X4_DxGRSHXCl8zSsExJ_wlql-nNe" type="audio/mpeg">
-                <!-- Replace with your own music URL, e.g., an MP3 file -->
-                Your browser does not support the audio element.
-            </audio>
+            
+            <!-- Google Drive Audio Player -->
+            <div style="margin: 20px auto; max-width: 500px;">
+                <iframe src="https://drive.google.com/file/d/1uAC8X4_DxGRSHXCl8zSsExJ_wlql-nNe/preview" 
+                        width="100%" 
+                        height="80" 
+                        allow="autoplay"
+                        style="border: 2px solid #d63384; border-radius: 10px;">
+                </iframe>
+            </div>
+            
+            <!-- Countdown Timer -->
+            <div style="margin-top: 40px;">
+                <h2 style="font-size: 2.5em; margin-bottom: 20px;">my soul ❤️❤️❤️</h2>
+                <div id="countdown" style="font-size: 1.5em; font-weight: bold; color: #d63384;">
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                        <div style="padding: 15px; background: rgba(255,255,255,0.3); border-radius: 10px; min-width: 100px;">
+                            <div id="days" style="font-size: 2em;">0</div>
+                            <div style="font-size: 0.8em;">يوم</div>
+                        </div>
+                        <div style="padding: 15px; background: rgba(255,255,255,0.3); border-radius: 10px; min-width: 100px;">
+                            <div id="hours" style="font-size: 2em;">0</div>
+                            <div style="font-size: 0.8em;">ساعة</div>
+                        </div>
+                        <div style="padding: 15px; background: rgba(255,255,255,0.3); border-radius: 10px; min-width: 100px;">
+                            <div id="minutes" style="font-size: 2em;">0</div>
+                            <div style="font-size: 0.8em;">دقيقة</div>
+                        </div>
+                        <div style="padding: 15px; background: rgba(255,255,255,0.3); border-radius: 10px; min-width: 100px;">
+                            <div id="seconds" style="font-size: 2em;">0</div>
+                            <div style="font-size: 0.8em;">ثانية</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -161,9 +215,36 @@
             if (password === '962008') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
+                startCountdown();
             } else {
                 document.getElementById('error').style.display = 'block';
             }
+        }
+
+        function startCountdown() {
+            // Start date: November 2, 2025
+            const startDate = new Date('2025-11-02T00:00:00').getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = now - startDate;
+
+                // Calculate time units
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Update the display
+                document.getElementById('days').innerHTML = days;
+                document.getElementById('hours').innerHTML = hours;
+                document.getElementById('minutes').innerHTML = minutes;
+                document.getElementById('seconds').innerHTML = seconds;
+            }
+
+            // Update immediately and then every second
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
         }
     </script>
 </body>
